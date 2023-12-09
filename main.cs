@@ -1,8 +1,9 @@
 using System;
 
+namespace lol{
+        class program{
 
-
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
            
              Console.WriteLine("Upisi broj:");

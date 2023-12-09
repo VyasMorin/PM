@@ -3,15 +3,23 @@ using System;
 namespace Projekt {
     class Program {
 
-        public static int faktorijel_loop(int n) {
-            int faktorijel = 1;
-            for (int i = 2; i <= n; i++) {
-                faktorijel = faktorijel * i;
+        static long CalculateFactorialLoop(int n) {
+            if (n < 0) {
+                throw new ArgumentException("Input must be a non-negative integer.");
             }
-            return faktorijel;
+            
+            long factorial = 1;
+            for (int i = 1; i <= n; i++) {
+                factorial *= i;
+            }
+
+            return factorial;
         }
 
-        public static double faktorijel_stirling(double n) {
+        public static double CalculateFactorialStirling(double n) {
+            if (n < 0) {
+                throw new ArgumentException("Input must be a non-negative integer.");
+            }
             return Math.Sqrt(2.0 * Math.PI * n) * Math.Pow((n / Math.E), n);
         }
 
@@ -20,12 +28,8 @@ namespace Projekt {
             //stirlingova formula
             Console.WriteLine("Upisi broj: \n");
             int n = Convert.ToInt32(Console.ReadLine());
-            if (n <= 0) {
-                Console.WriteLine("Upis netočan!");
-                return;
-            }
-            int faktorijel = Program.faktorijel_loop(n);
-            double stirling = Program.faktorijel_stirling(Convert.ToDouble(n));
+            long faktorijel = Program.CalculateFactorialLoop(n);
+            double stirling = Program.CalculateFactorialStirling(Convert.ToDouble(n));
             double apsolutna_greska = Math.Abs(Convert.ToDouble(faktorijel) - stirling);
 
             Console.WriteLine("'Klasicni' faktorijel broja " + n + " je " + faktorijel);

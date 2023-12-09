@@ -20,6 +20,10 @@ namespace Projekt {
             //stirlingova formula
             Console.WriteLine("Upisi broj: \n");
             int n = Convert.ToInt32(Console.ReadLine());
+            if (n <= 0) {
+                Console.WriteLine("Upis netočan!");
+                return;
+            }
             int faktorijel = Program.faktorijel_loop(n);
             double stirling = Program.faktorijel_stirling(Convert.ToDouble(n));
             double apsolutna_greska = Math.Abs(Convert.ToDouble(faktorijel) - stirling);
